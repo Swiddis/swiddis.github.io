@@ -2,14 +2,10 @@
 title: Descending Through Arrays and Problem Solving
 author: Simeon Widdis
 date: 2021-11-12 22:25:00 -0700
-categories: [Blogging, Problems]
+categories: [Drafts, Problems]
 tags: [problem solving, math, arrays, graph theory, number theory, computer science]
 math: true
 ---
-
-A story about how thinking about Christmas boxes leads to an interesting connection between computer science, number theory, and graph theory.
-
-This is currently a draft. Minor or major changes might occur.
 
 ## A mystery is afoot
 
