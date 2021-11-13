@@ -2,12 +2,12 @@
 title: Descending Through Arrays and Problem Solving
 author: Simeon Widdis
 date: 2021-11-12 22:25:00 -0700
-categories: [Drafts, Problems]
-tags: [problem solving, math, arrays, graph theory, number theory, computer science]
+categories: [Blogging, Problems]
+tags: [problem solving, math, arrays, graph theory, number theory, computer science, story]
 math: true
 ---
 
-## A mystery is afoot
+## A Mystery is Afoot
 
 Like many of the best stories in mathematics, our story today begins with playful pondering. We could be thinking of any number of things: a video game, a chore, opening presents for the upcoming Christmas, opening presents in a certain order, visiting indices of an array...
 
