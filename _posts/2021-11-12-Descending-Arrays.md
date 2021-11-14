@@ -13,15 +13,15 @@ Like many of the best stories in mathematics, our story today begins with playfu
 
 Well, there's an interesting thought. What if our Christmas presents contained a pointer to the next present in a sequence? Thinking more in the language of computer science, we might have an array containing $n$ integers, where each integer represents another index to visit next. Maybe there's a target we want to visit? Our Christmas box with our favorite wrapping paper, that may have our favorite gift? Let's try organizing our array so that the target is to the far left, and doesn't point anywhere. Let's also make it so that we start at the right. Finally, we can add a condition that every box randomly points to some box to its left. So our setup looks like this:
 
-[[Image of setup]]
+![Image of the setup](/assets/img/DescendingArrays/Setup.png)
 
 Now we're getting somewhere. If we start at the end of the chain, and continually follow our references, we'll eventually wind up at our target.
 
-[[Animation of one chain]]
+![Animation of one chain](/assets/img/DescendingArrays/OneChain.gif)
 
 But just one chain is boring: I want to know about multiple chains. What if I really want to get to the left quickly, but I end up having to go through every box? I wouldn't like that very much. It seems natural to ask, then, what the average behavior is. Specifically, I'm interested in the number of hops: if I repeat this process indefinitely, what is the average number of hops I'll go through?
 
-[[Animation of average of multiple chains]]
+![Animation of average of multiple chains](/assets/img/DescendingArrays/AvgChain.gif)
 
 More formally, we can say:
 > We're given an array of $n$ values, each one (except the first one) randomly containing an index less than its own index. Starting at the last item and traversing the chain back, what's the expected amount of hops, $h(n)$, to get to index 0?
@@ -39,10 +39,10 @@ import random
 # Let's try a few counts of items in our list
 for n in range(3, 10):
     # Populating our list with left-facing indices, with a -1 at the start to indicate our goal.
-    ls = [-1] + [random.randint(0, k-1) for k in range(1, n)]
+    ls = [0] + [random.randint(0, k-1) for k in range(1, n)]
     hop_count, index = 0, len(ls) - 1
     # Traversing down the chain
-    while ls[index] != -1:
+    while ls[index] != index:
         hop_count += 1
         index = ls[index]
     # Output our list and the hop count
@@ -50,13 +50,13 @@ for n in range(3, 10):
 ```
 Running this gives us some output that we can use to check for correctness:
 ```
-[-1, 0, 0] 1
-[-1, 0, 1, 1] 2
-[-1, 0, 1, 2, 2] 3
-[-1, 0, 0, 1, 0, 0] 1
-[-1, 0, 0, 0, 3, 4, 1] 2
-[-1, 0, 1, 0, 2, 4, 0, 4] 4
-[-1, 0, 0, 1, 2, 1, 1, 4, 6] 3
+[0, 0, 0] 1
+[0, 0, 0, 1] 2
+[0, 0, 1, 0, 0] 1
+[0, 0, 0, 2, 0, 3] 3
+[0, 0, 0, 1, 2, 3, 0] 1
+[0, 0, 0, 2, 2, 0, 2, 0] 1
+[0, 0, 0, 1, 2, 3, 1, 2, 1] 2
 ```
 Confident that our simulation works, we might then try answering our original question empirically, using the highly rigorous method of "Run it thousands of times."
 ```py
@@ -83,7 +83,7 @@ Running this gives us some numbers:
 9       2.716
 ```
 
-Now, that's a start, and is in-line with our trial run which mostly yielded low numbers (with one 4). But, I don't see any clear pattern here. Some more careful pondering seems necessary. Our initial survey of the crime scene complete, we move on to more intensive forensic analysis.
+Now, that's a start, and is in-line with our trial run which mostly yielded low numbers. But, I don't see any clear pattern here. Some more careful pondering seems necessary. Our initial survey of the crime scene complete, we move on to more intensive forensic analysis.
 
 ## A Familiar Fingerprint
 
@@ -123,7 +123,7 @@ Since guessing the solution didn't work, we need to perform a more careful analy
 
 ## A New Suspect
 
-Since simply taking the midpoint of what remains in the list didn't work, we need to concretely look at what we mean by "average." Well, we know the usual formula for an average in school: if we have a list of items $L=\{1,1,2,3,5,5,7\}$ and we want its average, we can take the sum of the list and divide it by the number of items in the list:
+Since simply taking the midpoint of what remains in the list didn't work, we need to concretely look at what we mean by "average." Well, we know the usual formula for an average in school: if we have a list of items $L=\\{1,1,2,3,5,5,7\\}$ and we want its average, we can take the sum of the list and divide it by the number of items in the list:
 
 $$\overline{L}=\frac{\sum L}{|L|}$$
 
