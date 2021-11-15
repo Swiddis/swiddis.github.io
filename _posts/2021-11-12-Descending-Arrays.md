@@ -91,7 +91,7 @@ As I pondered this, a familiar idea crept into my mind. I'd solved a few similar
 
 ![Animation of choosing an average position to the left](/assets/img/DescendingArrays/LeftAvg.gif)
 
-It seems reasonable that over one hop, we would cut the list in half, on average. Then after another hop, on average we would cut our initial list into a quarter. This type of halving comes up a lot in computer science: for example, in binary search or merge sort. When we see this type of halving, it's often indicative of logarithms being involved somehow. With binary search we have that our complexity from this halving is logarithmic, $O(\log_2(n))$, and with merge sort we also have a logarithm in the complexity, $O(n\log_2(n))$. In merge sort, the additional $n$ term comes from the fact that we're working on every partition, not just one. 
+It seems reasonable that over one hop, we would cut the list in half, on average. Then after another hop, on average we would cut our initial list into a quarter. This type of halving comes up a lot in computer science: for example, in binary search or merge sort. When we see this type of halving, it's often indicative of logarithms being involved somehow. With binary search we have that our complexity from this halving is logarithmic, $O(\log_2(n))$, and with merge sort we also have a logarithm in the complexity, $O(n\log_2(n))$. The additional $n$ term comes from the fact that we're working on every partition instead of just one. 
 
 From this, it seems reasonable to guess that our mystery function is $h(n)=\log_2(n)$. Let's give it a shot! Modifying our code yet again...
 ```py
@@ -127,7 +127,7 @@ $$\overline{L}=\frac{\sum L}{|L|}$$
 
 But how do we apply this calculation to more wild situations, like our array chains? Well, we're uniformly selecting one of the next indices, and each of those indices surely has its own average. Couldn't we just take the average of averages?
 
-[[Animation of taking the average of averages]]
+![Animation showing the process of taking the average of averages for n=5](/assets/img/DescendingArrays/AvgOfAvg.gif)
 
 By doing this, we can set up a recurrence relation. We have a base case that we know with a list of 1 index: since we're already at the start in that case, we have 0 hops. Then every index after that should just be one hop, plus the average of everything that comes after it:
 
@@ -270,6 +270,6 @@ In my opinion, these are the types of questions that allow a problem solver to t
 
 These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up any insight from the resulting asymmetries.
 
-So, with all that said, let's all try to have a little more fun with our problem solving and our explorations: challenges are the best teachers, fun challenges even more so.
-
 ![A visualization of every possible path for n=10, with opacity corresponding to frequency.](/assets/img/DescendingArrays/AllChains.png)
+
+So, with all that said, let's all try to have a little more fun with our problem solving and our explorations: challenges are the best teachers, fun challenges even more so.
