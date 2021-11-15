@@ -89,13 +89,11 @@ Now, that's a start, and is in-line with our trial run which mostly yielded low 
 
 As I pondered this, a familiar idea crept into my mind. I'd solved a few similar problems in the past, and that experience gave me an intuition. When looking at successive choices of random values, it can be helpful to choose the "middle" of the distribution. If we consider just one case where we're moving to a randomly selected spot to the left, on average, we'll land in the middle of that selection.
 
-[[Animation of average selection to the left]]
+![Animation of choosing an average position to the left](/assets/img/DescendingArrays/LeftAvg.gif)
 
-It seems reasonable that over one hop, we would cut the list in half, on average. Then after another hop, on average we would cut our initial list into a quarter. This type of halving comes up a lot in computer science, for example, in binary search.
+It seems reasonable that over one hop, we would cut the list in half, on average. Then after another hop, on average we would cut our initial list into a quarter. This type of halving comes up a lot in computer science: for example, in binary search or merge sort. When we see this type of halving, it's often indicative of logarithms being involved somehow. With binary search we have that our complexity from this halving is logarithmic, $O(\log_2(n))$, and with merge sort we also have a logarithm in the complexity, $O(n\log_2(n))$. In merge sort, the additional $n$ term comes from the fact that we're working on every partition, not just one. 
 
-[[Animation of binary search]]
-
-When we see this type of halving, it's often indicative of logarithms being involved somehow. From this, it seems reasonable to guess that our mystery function is $h(n)=\log_2(n)$. Let's give it a shot! Modifying our code yet again...
+From this, it seems reasonable to guess that our mystery function is $h(n)=\log_2(n)$. Let's give it a shot! Modifying our code yet again...
 ```py
 import math
 
@@ -212,7 +210,7 @@ Now, the mathematically inclined might recognize this sequence on the spot, but 
 
 With just a few terms, the OEIS guessed the rest of the sequence. It looks like our values are the harmonic numbers $H_n$, shifted down by one. This gives us a new guess:
 
-$$h(n)=H_{n-1}=\sum_{i=1}^{n-1}\frac{1}{i}&=\frac{1}{n-1}+\frac{1}{n-2}+\cdots+\frac13+\frac12+1$$
+$$h(n)=H_{n-1}=\sum_{i=1}^{n-1}\frac{1}{i}=\frac{1}{n-1}+\frac{1}{n-2}+\cdots+\frac13+\frac12+1$$
 
 We might double-check our correctness by implementing it in code:
 
@@ -272,6 +270,6 @@ In my opinion, these are the types of questions that allow a problem solver to t
 
 These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up any insight from the resulting asymmetries.
 
-Let's all try to have a little more fun with our problem solving and our explorations: challenges are the best teachers.
+So, with all that said, let's all try to have a little more fun with our problem solving and our explorations: challenges are the best teachers, fun challenges even more so.
 
 ![A visualization of every possible path for n=10, with opacity corresponding to frequency.](/assets/img/DescendingArrays/AllChains.png)
