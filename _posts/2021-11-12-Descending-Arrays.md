@@ -15,7 +15,7 @@ Well, there's an interesting thought. What if our Christmas presents contained a
 
 ![Image of the setup](/assets/img/DescendingArrays/Setup.png)
 
-Now we're getting somewhere. If we start at the end of the chain, and continually follow our references, we'll eventually wind up at our target.
+Now we're getting somewhere. If we start at the end of the chain and continually follow our references, we'll eventually wind up at our target.
 
 ![Animation of one chain](/assets/img/DescendingArrays/OneChain.gif)
 
@@ -182,7 +182,7 @@ from fractions import Fraction
 
 def h(n):
     if n == 1:
-		# Fractions will propagate up the call stack with arithmetic operations
+        # Fractions will propagate up the call stack with arithmetic operations
         return Fraction(0)
     else:
         sum_of_left = sum(h(i) for i in range(1, n))
@@ -212,7 +212,7 @@ Now, the mathematically inclined might recognize this sequence on the spot, but 
 
 With just a few terms, the OEIS guessed the rest of the sequence. It looks like our values are the harmonic numbers $H_n$, shifted down by one. This gives us a new guess:
 
-$$h(n)=H_{n-1}=\sum_{i=1}^{n-1}\frac{1}{i}$$
+$$h(n)=H_{n-1}=\sum_{i=1}^{n-1}\frac{1}{i}&=\frac{1}{n-1}+\frac{1}{n-2}+\cdots+\frac13+\frac12+1$$
 
 We might double-check our correctness by implementing it in code:
 
@@ -270,7 +270,7 @@ We've solved our initial mystery: we set out to find the average behavior, we ha
 
 In my opinion, these are the types of questions that allow a problem solver to transition from good to great. To not only answer a question, but to really solidify our understanding of that answer. To challenge ourselves to thoroughly eviscerate the shroud of mystery.
 
-These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and exploit the fact that there's asymmetries in the resulting images to see if that helps us explain what we're seeing.
+These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up anything from the resulting symmetries.
 
 Let's all try to have a little more fun with our problem solving and our explorations: challenges are the best teachers.
 
