@@ -1,7 +1,7 @@
 ---
 title: Descending Through Arrays and Problem Solving
 author: Simeon Widdis
-date: 2021-11-12 22:25:00 -0700
+date: 2021-11-15 12:00:00 -0700
 categories: [Blogging, Problems]
 tags: [problem solving, math, arrays, graph theory, number theory, computer science, story]
 math: true
@@ -159,7 +159,7 @@ for i in range(3, 10):
     print(i, round(mean, 3), round(guess, 3), round(mean - guess, 3), sep='\t')
 ```
 
-After turning this over in our head a few times and running it, we see:
+After mulling over this result and running it, we see:
 ```
 3       1.501   1.5     0.001
 4       1.832   1.833   -0.001
@@ -264,11 +264,11 @@ It takes a little bit of squinting, but it turns out that these are indeed equiv
 
 ## Into the Rabbit Hole
 
-We've solved our initial mystery: we set out to find the average behavior, we had a false start, and a few struggles, but we eventually found our suspect and proved they were the murderer. But if you recall, at the beginning of our case we saw the fingerprint of someone familiar, a fingerprint indicating something deeper is at play. Why was our initial guess wrong, what distinguishes this situation from other halving algorithms? Why did the harmonic numbers show up? Can we refine our intuition?
+We've solved our initial mystery: we set out to find the average behavior, and after a false start and a few struggles, we eventually found our suspect and proved they were the murderer. But if you recall, at the beginning of our case we saw the fingerprint of someone familiar, a fingerprint indicating something deeper is at play. Why was our initial guess wrong, what distinguishes this situation from other halving algorithms? Why did the harmonic numbers show up? Can we refine our intuition?
 
 In my opinion, these are the types of questions that allow a problem solver to transition from good to great. To not only answer a question, but to really solidify our understanding of that answer. To challenge ourselves to thoroughly eviscerate the shroud of mystery.
 
-These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up any insight from the resulting asymmetries.
+These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains, where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up any insight from the resulting asymmetries.
 
 ![A visualization of every possible path for n=10, with opacity corresponding to frequency.](/assets/img/DescendingArrays/AllChains.png)
 
