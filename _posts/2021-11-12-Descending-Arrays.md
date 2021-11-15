@@ -270,7 +270,7 @@ We've solved our initial mystery: we set out to find the average behavior, we ha
 
 In my opinion, these are the types of questions that allow a problem solver to transition from good to great. To not only answer a question, but to really solidify our understanding of that answer. To challenge ourselves to thoroughly eviscerate the shroud of mystery.
 
-These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up anything from the resulting symmetries.
+These questions all have their own rich answers that I think are best found through exploration. For example, in attempting to deduce why we found the harmonic numbers here, we might wonder about similar stochastic processes, leading us into the realm of absorbing Markov chains where geometric series are plentiful. Or maybe for repairing our intuition, we might try to visualize every possible path, and see if we can pick up any insight from the resulting asymmetries.
 
 Let's all try to have a little more fun with our problem solving and our explorations: challenges are the best teachers.
 
