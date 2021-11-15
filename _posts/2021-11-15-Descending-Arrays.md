@@ -247,7 +247,7 @@ $$\begin{aligned}
 1+\frac{1}{n}\sum_{i=1}^{n-1}H_i&=H_{n-1}
 \end{aligned}$$
 
-Once we note that $H_1=1$, this looks awfully similar to our earlier recurrence, but shifted a little. Let's shift the $n-1$ by $1$ to $n$ (we can do this because the recurrence functions the same regardless of the precise value), add our base case of $H_1=1$, and compare them:
+Once we note that $H_1=1$, this looks awfully similar to our earlier recurrence, but shifted a little. Let's shift the $n-1$ by $1$ to $n$ (we can do this because the recurrence functions the same regardless of the precise value), add our base case, and compare them:
 
 $$\begin{aligned}
 h(n)&=\begin{cases}
