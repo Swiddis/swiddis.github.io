@@ -254,8 +254,8 @@ And since $H_0=0$,
 
 $$\begin{aligned}
 H_n&=1+\frac{1}{n}\sum_{i=1}^{n-1}H_{i}\\
-H_n-1&=\frac{1}{n}\sum_{i=0}^{n-1}H_i\\
-nH_n-n&=\sum_{i=0}^{n-1}H_i
+H_n-1&=\frac{1}{n}\sum_{i=1}^{n-1}H_i\\
+nH_n-n&=\sum_{i=1}^{n-1}H_i
 \end{aligned}$$
 
 Pulling down our earlier equality:
