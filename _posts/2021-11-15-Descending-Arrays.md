@@ -239,7 +239,7 @@ $$\begin{aligned}
 &=nH_{n-1}-n+1
 \end{aligned}$$
 
-Now we consider the equation for $h(n)$ from our earlier equivalence relation, and increment $n$:
+Now we consider the equation for $h(n)$ from our earlier equivalence, and increment $n$:
 
 $$\begin{aligned}
 h(n)&=1+\frac{1}{n-1}\sum_{i=1}^{n-1}h(i)\\
