@@ -38,7 +38,7 @@ import random
 
 # Let's try a few counts of items in our list
 for n in range(3, 10):
-    # Populating our list with left-facing indices, with a -1 at the start to indicate our goal.
+    # Populating our list with left-facing indices, except the leftmost.
     ls = [0] + [random.randint(0, k-1) for k in range(1, n)]
     hop_count, index = 0, len(ls) - 1
     # Traversing down the chain
@@ -230,37 +230,42 @@ There are a few ways that we might go about proving that our recurrence relation
 
 But math at its best, much like software engineering, is collaborative. So I turned to some friends to ask if they could find a better approach.
 
-Sure enough, one of them did. Compared to my hard algebra, they found a very pretty way to reorder the sums, and it goes like this:
+Sure enough, one of them did. Compared to my hard algebra, they found a very pretty way to reorder and substitute the two functions, which lets us reach a known property of the harmonic numbers, that $H_n=H_{n-1}+\frac1n$. It goes like this:
 
 $$\begin{aligned}
 \sum_{i=1}^{n-1}H_i&=\left(1+\frac12+\frac13+\cdots+\frac1{n-1}\right)+\left(1+\frac12+\frac13+\cdots+\frac1{n-2}\right)+\cdots+1\\
 &=(n-1)+\frac{n-2}{2}+\frac{n-3}{3}+\cdots+\frac{1}{n-1}\\
 &=\left(n+\frac{n}{2}+\frac{n}{3}+\cdots+\frac{n}{n-1}\right)-\left(1+\frac{2}{2}+\frac{3}{3}+\cdots+\frac{n-1}{n-1}\right)\\
-&=nH_{n-1}-n
+&=nH_{n-1}-n+1
 \end{aligned}$$
 
-Now dividing both sides by $n$ and adding 1, we get:
+Now we consider the equation for $h(n)$ from our earlier equivalence relation, and also increment $n$:
 
 $$\begin{aligned}
-\sum_{i=1}^{n-1}H_i&=nH_{n-1}-n\\
-\frac{1}{n}\sum_{i=1}^{n-1}H_i&=H_{n-1}-1\\
-1+\frac{1}{n}\sum_{i=1}^{n-1}H_i&=H_{n-1}
+h(n)&=1+\frac{1}{n-1}\sum_{i=1}^{n-1}h(i)\\
+h(n+1)&=1+\frac{1}{n}\sum_{i=1}^{n}h(i)\\
 \end{aligned}$$
 
-Once we note that $H_1=1$, this looks awfully similar to our earlier recurrence, but shifted a little. Let's shift the $n-1$ by $1$ to $n$ (we can do this because the recurrence functions the same regardless of the precise value), add our base case, and compare them:
+Since we suppose that $H_{n-1}=h(n)$, then $H_n=h(n+1)$, and we have:
+
+$$H_n=1+\frac{1}{n}\sum_{i=1}^{n}H_{i-1}$$
+
+And since $H_0=0$,
 
 $$\begin{aligned}
-h(n)&=\begin{cases}
-0&n=1\\
-1+\frac{1}{n-1}\sum_{i=1}^{n-1}h(i)&n>1
-\end{cases}\\
-H_n&=\begin{cases}
-1&n=1\\
-1+\frac{1}{n}\sum_{i=1}^{n-1}H_{i}&n>1
-\end{cases}
+H_n&=1+\frac{1}{n}\sum_{i=1}^{n-1}H_{i}\\
+H_n-1&=\frac{1}{n}\sum_{i=0}^{n-1}H_i\\
+nH_n-n&=\sum_{i=0}^{n-1}H_i
 \end{aligned}$$
 
-It takes a little bit of squinting, but it turns out that these are indeed equivalent, just shifted one off of each other. Intuitively, you can imagine that adding one in our base case means we need to divide by an extra term. If you want to persuade yourself more rigorously, you can start by carefully considering the behavior of $h(n+1)$. [Q.E.D.](https://en.wikipedia.org/wiki/Q.E.D.)
+Pulling down our earlier equality:
+
+$$\begin{aligned}
+nH_n-n&=nH_{n-1}-n+1\\
+H_n&=H_{n-1}+\frac{1}{n}
+\end{aligned}$$
+
+Which is true by the definition of the harmonic numbers. [Q.E.D.](https://en.wikipedia.org/wiki/Q.E.D.)
 
 ## Into the Rabbit Hole
 
