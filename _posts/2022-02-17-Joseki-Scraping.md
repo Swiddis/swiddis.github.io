@@ -3,7 +3,7 @@ title: Data Mining my Favorite Game
 author: Simeon Widdis
 date: 2022-02-17 20:31:00 -0700
 categories: [Blogging, Explorations]
-tags: [computer science, data mining, go, story, ]
+tags: [computer science, data mining, go, story]
 math: true
 ---
 
