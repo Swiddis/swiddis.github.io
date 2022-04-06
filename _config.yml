@@ -42,7 +42,6 @@ social:
   email: sawiddis@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/etoastie1      # change to your twitter homepage
     - https://github.com/Swiddis       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
